@@ -1,2 +1,2 @@
 # Discord-bot-template
-Template for creating csbots in python
+Template for creating discord bots in python
