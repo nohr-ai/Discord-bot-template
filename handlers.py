@@ -1,4 +1,6 @@
 from functools import partial
+from templateHandler import TemplateHandler
+from genericMessageHandler import GenericMessageHandler
 
 message_handlers = [
     partial(TemplateHandler, "Template handler", "Nothing to see here", False),
