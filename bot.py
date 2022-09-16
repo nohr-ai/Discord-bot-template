@@ -3,6 +3,7 @@
 import os
 import logging
 import discord
+import handlers
 from constants import Permissions
 from generic_message_handler import GenericMessageHandler
 from configuration import Configuration
@@ -44,12 +45,14 @@ class Bot(discord.Client):
 
     async def handler_setup(self):
         self.log.info("Setting up handlers..")
-        self.message_handlers.append(
-            GenericMessageHandler("???", "Not implemented", True))
-        self.log.debug("genericMessageHandler... OK")
-        self.message_handlers.append(TemplateHandler("Template handler", "Nothing to see here", False))
-        self.reaction_handlers.append(TemplateHandler("Template handler", "Nothing to see here", False))
-        self.log.debug("TemplateHandler... OK")
+        for handler in handlers.message_handlers:
+            self.log.debug(f"Handler {handler}...")
+            self.message_handlers.append(handler())
+            self.log.debug(f"Handler  {handler}... OK")
+        for handler in handlers.reaction_handlers:
+            self.log.debug(f"Handler {handler}...")
+            self.message_handlers.append(handler())
+            self.log.debug(f"Handler  {handler}... OK")
         self.log.info("Handlers set up")
 
     def log_setup(self):
