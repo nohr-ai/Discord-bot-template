@@ -101,7 +101,7 @@ class Bot(discord.Client):
             print(g)
             for r in g.roles:
                 print(r)
-                if r.id == self.config.team_role_ID:
+                if r.id == self.config.member_role_ID:
                     print(r)
                     return r
 

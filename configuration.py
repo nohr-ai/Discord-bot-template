@@ -50,10 +50,10 @@ class Configuration(abc.MutableMapping):
     def _setupCfgTerminal(self):
         self.log.debug("Setting up configuration from terminal")
         try:
-            keys = "guild role owner_ID team_role_ID broadcast_channel server_ID"
+            keys = "guild role owner_ID member_role_ID broadcast_channel server_ID"
             vals = [
                 None, None,
-                int(input("OwnerID: ")), int(input("Team role ID: ")),
+                int(input("OwnerID: ")), int(input("Member role ID: ")),
                 input("Name of broadcast channel: "), int(input("Server ID: "))
             ]
             self.__config = {k: v for k, v in zip(keys.split(), vals)}
