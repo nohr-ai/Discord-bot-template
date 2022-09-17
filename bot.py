@@ -39,19 +39,13 @@ class Bot(discord.Client):
         self.config = config
         self.broadcast_channel = None
         self.log = None
-        # Put handler for messages and reactions here
-        self.message_handlers = []
-        self.reaction_handlers = []
+        self.handlers = []
 
     async def handler_setup(self):
         self.log.info("Setting up handlers..")
-        for handler in handlers.message_handlers:
+        for handler in handlers.handlers:
             self.log.debug(f"Handler {handler}...")
-            self.message_handlers.append(handler())
-            self.log.debug(f"Handler  {handler}... OK")
-        for handler in handlers.reaction_handlers:
-            self.log.debug(f"Handler {handler}...")
-            self.message_handlers.append(handler())
+            self.handlers.append(handler())
             self.log.debug(f"Handler  {handler}... OK")
         self.log.info("Handlers set up")
 
@@ -113,7 +107,7 @@ class Bot(discord.Client):
         if not reaction.member:
             return
         permissions = await self.get_permissions(reaction.member)
-        for handler in self.reaction_handlers:
+        for handler in self.handlers:
             await handler.dispatch(reaction, permissions)
 
     def get_member(self, id) -> discord.Member:
@@ -132,7 +126,7 @@ class Bot(discord.Client):
         if not reaction.member:
             return
         permissions = await self.get_permissions(reaction.member)
-        for handler in self.reaction_handlers:
+        for handler in self.handlers:
             await handler.dispatch(reaction, permissions)
 
     async def on_message(self, message):
@@ -147,7 +141,7 @@ class Bot(discord.Client):
             if member:
                 permissions = await self.get_permissions(member)
 
-        for handler in self.message_handlers:
+        for handler in self.handlers:
             await handler.dispatch(message, permissions)
 
     async def get_permissions(self, member):
