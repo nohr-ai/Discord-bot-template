@@ -9,27 +9,6 @@ from genericMessageHandler import GenericMessageHandler
 from configuration import Configuration
 from templateHandler import TemplateHandler
 
-'''
-Interface:
-
-!register - start registration for next match(this week or next week default to wednesdays)
-- The bot gives a message that people react to to register
-- Manual stop of registration
-
-- After registration, registered users can PM bot to set map preferences with
-!maps
-- The bot responds with a list of all maps, with a reaction to each map containing number 1-7
-- User reacts with the appropriate rank for the map
-- The bot ends with a question of which rank the user is
-
-!teams
-- The bot rolls teams for matches
-- Teams are assigned a pool of maps they will play based on preferences
-- Balanced by rank and map pool
-- Ban order is decided
-'''
-
-
 class Bot(discord.Client):
     def __init__(self, config):
         intents = discord.Intents.default()
