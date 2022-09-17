@@ -24,7 +24,7 @@ class Bot(discord.Client):
         self.log.info("Setting up handlers..")
         for handler in handlers.handlers:
             self.log.debug(f"Handler {handler}...")
-            self.handlers.append(handler())
+            self.handlers.append(handler)
             self.log.debug(f"Handler  {handler}... OK")
         self.log.info("Handlers set up")
 
@@ -79,8 +79,6 @@ class Bot(discord.Client):
                     return r
 
     async def on_raw_reaction_add(self, reaction):
-        if reaction.member.id == self.user.id:
-            return
         self.log.debug(f"Raw reaction add from {reaction.user_id}")
         reaction.member = self.get_member(reaction.user_id)
         if not reaction.member:
@@ -98,8 +96,6 @@ class Bot(discord.Client):
         return member
 
     async def on_raw_reaction_remove(self, reaction):
-        if reaction.member.id == self.user.id:
-            return
         self.log.debug(f"Raw reaction remove from: {reaction.user_id}")
         reaction.member = self.get_member(reaction.user_id)
         if not reaction.member:
@@ -127,7 +123,7 @@ class Bot(discord.Client):
         if self.broadcast_channel.permissions_for(member).administrator:
             self.log.debug(f"Admin: {member.name}")
             return Permissions.admin
-        elif self.broadcast_channel.permissions_for(member).manage_roles:
+        elif self.config["member_role_ID"] in [role.id for role in member.roles]:
             self.log.debug(f"Member: {member.name}")
             return Permissions.member
         else:
