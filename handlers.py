@@ -1,4 +1,3 @@
-from functools import partial
 from templateHandler import TemplateHandler
 from genericMessageHandler import GenericMessageHandler
 
