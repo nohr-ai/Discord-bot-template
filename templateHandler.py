@@ -1,5 +1,5 @@
 import logging
-from generic_message_handler import GenericMessageHandler
+from genericMessageHandler import GenericMessageHandler
 
 
 
