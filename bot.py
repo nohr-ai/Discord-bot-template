@@ -5,7 +5,7 @@ import logging
 import discord
 import handlers
 from constants import Permissions
-from generic_message_handler import GenericMessageHandler
+from genericMessageHandler import GenericMessageHandler
 from configuration import Configuration
 from templateHandler import TemplateHandler
 
