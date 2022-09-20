@@ -35,6 +35,10 @@ See `requirements.txt` for further dependencies
         - Run the bot and do the setup from terminal
             - The results are stored in `config.json`
 
+## Running the bot
+---
+- `python3.10 bot.py`
+
 ## Adding your own logic
 ---
 See templateHandler.py for an idea how to start
