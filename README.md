@@ -10,7 +10,7 @@ See `requirements.txt` for further dependencies
 ## Setup
 ---
 1. To interact with the discord api and get access to your server, we need an access token
-    - Go to [discordDeveloperAPI](https://discord.com/developers/applications)
+    - Go to [discordDeveloperPortal](https://discord.com/developers/applications)
         - Under 'Applications'
             - Select 'New Applicaion'
             - Name your bot something meaningful
