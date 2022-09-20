@@ -24,20 +24,30 @@ See `requirements.txt` for further dependencies
             - Create a file 'auth' in your repository
                 - Copy the token into the file
                 - Save
-        - The bot requires privileged intents to access members and messages, enable:
+        - The bot requires privileged intents to access members and messages in your server, enable:
             - `SERVER MEMBERS INTENT`
             - `MESSAGE CONTENT INTENT`
 
-3. Install dependencies
+
+3. We will now invite the bot to your server:
+    - Under `OAuth2`:
+        - `URL Generator`
+            - Select `bot`
+            - No permissions needed by default
+                - Repeat this step with diferent permissions if you require it later
+
+4. Install dependencies
     - With python3.10 or later, install dependencies found in 'requirements.txt'
         - python3.10 -m pip install -r requirements.txt
 
-4. Configure the bot
+5. Configure the bot
     - In order for the bot to work, it needs to know what server it's suppose to listen/talk to and what members it should listen to
         - You can write the config file `config.json` yourself 
         - or
         - Run the bot and do the setup from terminal
             - The results are stored in `config.json`
+        - By default the bot listens to all members in the server
+            - You can set 1 special role_ID `member_role_ID` if you want special authorization for some members
 
 ## Running the bot
 ---
