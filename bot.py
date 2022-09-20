@@ -15,7 +15,7 @@ class Bot(discord.Client):
         intents = discord.Intents.default()
         intents.members = True
         intents.reactions = True
-        intents.messages = True
+        intents.message_content = True
         super().__init__(intents=intents)
         self.config = config
         self.broadcast_channel = None
@@ -110,7 +110,8 @@ class Bot(discord.Client):
         if message.author == self.user:
             return
         permissions = Permissions.restricted
-        self.log.debug(f"Message from: {message.author.id}")
+        self.log.debug(
+            f"Message from: {message.author.id}")
         if isinstance(message.channel, discord.TextChannel):
             permissions = await self.get_permissions(message.author)
         elif isinstance(message.channel, discord.DMChannel):
