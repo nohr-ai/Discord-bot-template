@@ -53,7 +53,7 @@ See `requirements.txt` for further dependencies
 ## Running the bot
 ---
 - `python3.10 bot.py`
-- The bot should send a message `I'm online' to your server's general channel
+- The bot should send a message `I'm online' to your selected broadcast-channel
     - Try reach the template handler by typing the command `!template` in the chat
 
 ## Adding your own logic
