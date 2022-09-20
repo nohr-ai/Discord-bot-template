@@ -9,11 +9,13 @@ from genericMessageHandler import GenericMessageHandler
 from configuration import Configuration
 from templateHandler import TemplateHandler
 
+
 class Bot(discord.Client):
     def __init__(self, config):
         intents = discord.Intents.default()
         intents.members = True
         intents.reactions = True
+        intents.messages = True
         super().__init__(intents=intents)
         self.config = config
         self.broadcast_channel = None
