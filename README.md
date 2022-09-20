@@ -9,7 +9,8 @@ See `requirements.txt` for further dependencies
 
 ## Setup
 ---
-1. To interact with the discord api and get access to your server, we need an access token
+1. Clone the repository to your machine
+2. To interact with the discord api and get access to your server, we need an access token
     - Go to [discordDeveloperPortal](https://discord.com/developers/applications)
         - Under 'Applications'
             - Select 'New Applicaion'
@@ -24,11 +25,11 @@ See `requirements.txt` for further dependencies
                 - Copy the token into the file
                 - Save
 
-2. Install dependencies
+3. Install dependencies
     - With python3.10 or later, install dependencies found in 'requirements.txt'
         - python3.10 -m pip install -r requirements.txt
 
-3. Configure the bot
+4. Configure the bot
     - In order for the bot to work, it needs to know what server it's suppose to listen/talk to and what members it should listen to
         - You can write the config file `config.json` yourself 
         - or
