@@ -24,6 +24,9 @@ See `requirements.txt` for further dependencies
             - Create a file 'auth' in your repository
                 - Copy the token into the file
                 - Save
+        - The bot requires privileged intents to access members and messages, enable:
+            - `SERVER MEMBERS INTENT`
+            - `MESSAGE CONTENT INTENT`
 
 3. Install dependencies
     - With python3.10 or later, install dependencies found in 'requirements.txt'
