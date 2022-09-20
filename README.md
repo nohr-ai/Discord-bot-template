@@ -35,6 +35,7 @@ See `requirements.txt` for further dependencies
             - Select `bot`
             - No permissions needed by default
                 - Repeat this step with diferent permissions if you require it later
+            - Copy the generated URL into your browser's search field
 
 4. Install dependencies
     - With python3.10 or later, install dependencies found in 'requirements.txt'
@@ -52,6 +53,8 @@ See `requirements.txt` for further dependencies
 ## Running the bot
 ---
 - `python3.10 bot.py`
+- The bot should send a message `I'm online' to your server's general channel
+    - Try reach the template handler by typing the command `!template` in the chat
 
 ## Adding your own logic
 ---
