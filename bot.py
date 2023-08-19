@@ -9,6 +9,7 @@ from genericMessageHandler import GenericMessageHandler
 from configuration import Configuration
 from templateHandler import TemplateHandler
 
+
 class Bot(discord.Client):
     def __init__(self, config):
         intents = discord.Intents.default()
@@ -18,6 +19,7 @@ class Bot(discord.Client):
         self.config = config
         self.broadcast_channel = None
         self.log = None
+        self.booted = False
         self.handlers = []
 
     async def handler_setup(self):
@@ -31,13 +33,13 @@ class Bot(discord.Client):
     def log_setup(self):
         log_format = "%(levelname)s %(name)s %(asctime)s - %(message)s"
         formatter = logging.Formatter(log_format)
-        normal_handler = logging.FileHandler(
-            f"{self.__class__.__name__}.log", mode="w")
+        normal_handler = logging.FileHandler(f"{self.__class__.__name__}.log", mode="w")
         normal_handler.setFormatter(formatter)
         normal_handler.setLevel(logging.WARNING)
 
         debug_handler = logging.FileHandler(
-            f"{self.__class__.__name__}.debug.log", mode="w")
+            f"{self.__class__.__name__}.debug.log", mode="w"
+        )
         debug_handler.setFormatter(formatter)
         debug_handler.setLevel(logging.DEBUG)
 
@@ -48,6 +50,8 @@ class Bot(discord.Client):
         self.log.addHandler(debug_handler)
 
     async def on_ready(self):
+        if self.booted:
+            return
         self.log_setup()
         self.log.info("Backend running")
         self.config["role"] = await self.get_role()
@@ -59,9 +63,11 @@ class Bot(discord.Client):
 
         if not self.broadcast_channel:
             self.log.error(
-                f"Unable to set broadcast-channel: {self.config.broadcast_channel}")
+                f"Unable to set broadcast-channel: {self.config.broadcast_channel}"
+            )
             await self.close()
             exit(-1)
+        self.booted = True
 
         self.log.debug("Broadcast-channel setup")
 
